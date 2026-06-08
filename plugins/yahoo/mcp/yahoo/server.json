@@ -1,0 +1,8 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.fantasylab/yahoo",
+  "description": "Yahoo Fantasy Sports MCP (NFL, NHL, NBA, MLB): leagues, standings, rosters, matchups, free agents/waivers, plus write ops (set-lineup, add/drop, trades). Runs via uvx. Requires a one-time Yahoo OAuth setup (`uvx --from mcp-yahoo-fantasy yahoo-login`) with YAHOO_CONSUMER_KEY and YAHOO_CONSUMER_SECRET from a Yahoo developer app.",
+  "version": "0.1.0",
+  "command": "uvx",
+  "args": ["--from", "mcp-yahoo-fantasy", "yahoo"]
+}

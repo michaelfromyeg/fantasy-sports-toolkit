@@ -1,0 +1,10 @@
+name: yahoo
+version: 0.1.0
+owner:
+  name: Fantasy Lab
+  namespace: dev.fantasylab
+  email: team@fantasylab.dev
+description: Yahoo Fantasy data provider (MCP), covering Yahoo's fantasy sports (NFL, NHL, NBA, MLB) with read and write access (leagues, rosters, matchups, free agents, set-lineup, add/drop, trades). Needs a one-time Yahoo OAuth login. Install alongside fantasy-manager to give the skills live data, the same way the sleeper provider does.
+license: MIT
+components:
+  - mcp: mcp/yahoo

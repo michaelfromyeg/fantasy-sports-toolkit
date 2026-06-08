@@ -11,4 +11,7 @@ plugins:
   - plugin: ./plugins/sleeper
     category: provider
     tags: [sleeper, mcp, data]
+  - plugin: ./plugins/yahoo
+    category: provider
+    tags: [yahoo, mcp, data]
 allow_dependencies_on: [dev.fantasylab]

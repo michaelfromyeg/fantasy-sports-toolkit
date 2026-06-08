@@ -51,9 +51,12 @@ editing; it's the whole point of the repo.
     (`sports-data`, `reddit`, `web-fetch`). These point at third-party servers, not
     code maintained here.
   - `evals/*.cases.yaml` holds per-skill case suites; see the eval format below.
-- `plugins/sleeper` (`weft.yaml`, v1.1.x) is a single MCP data provider (read-only
-  Sleeper API, NFL+NBA, no key). This is the swap point: a future `espn`/`yahoo`
-  provider would slot in the same way and the skills work unchanged.
+- `plugins/sleeper` and `plugins/yahoo` (each a `weft.yaml`) are interchangeable MCP
+  data providers, and the swap point: Sleeper (read-only, NFL+NBA, no key) and Yahoo
+  (read+write across NFL/NHL/NBA/MLB via the `mcp-yahoo-fantasy` package run with
+  `uvx`, one-time OAuth). The skills treat whichever is connected as a plain data
+  source, so a future ESPN provider would slot in the same way and the skills work
+  unchanged.
 
 ### Why skills must stay agnostic
 
