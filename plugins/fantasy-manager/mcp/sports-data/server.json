@@ -1,0 +1,12 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.fantasylab/sports-data",
+  "description": "Live NFL scores, schedules, standings, and team/player data (TheSportsDB via the Pipeworx gateway). Remote HTTP server, no install, no API key.",
+  "version": "0.1.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://gateway.pipeworx.io/sports/mcp"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.fantasylab/reddit",
+  "description": "Browse and search Reddit (r/fantasyfootball, r/nfl) for injury news, beat-reporter chatter, start/sit threads, and community sentiment. Anonymous, no API key.",
+  "version": "1.1.13",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "reddit-mcp-buddy",
+      "version": "1.1.13",
+      "transport": { "type": "stdio" }
+    }
+  ]
+}

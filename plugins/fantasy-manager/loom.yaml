@@ -1,0 +1,21 @@
+name: fantasy-manager
+version: 0.2.0
+owner:
+  name: Fantasy Lab
+  namespace: dev.fantasylab
+  email: team@fantasylab.dev
+description: Provider-agnostic skills for running a fantasy football team -- lineups, waivers, and trades -- bundled with the context MCPs (live scores, Reddit news, web fetch) that help regardless of which fantasy platform you use. Add a data provider (e.g. the sleeper plugin) for your roster.
+license: MIT
+components:
+  - skill: skills/set-lineup
+    evals: evals/set-lineup.cases.yaml
+  - skill: skills/waiver-wire
+    evals: evals/waiver-wire.cases.yaml
+  - skill: skills/trade-analyzer
+    evals: evals/trade-analyzer.cases.yaml
+  - command: commands/start-sit.md
+  - command: commands/trade-check.md
+  - agent: agents/waiver-scout.md
+  - mcp: mcp/sports-data
+  - mcp: mcp/reddit
+  - mcp: mcp/web-fetch

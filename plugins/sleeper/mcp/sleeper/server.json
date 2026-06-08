@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.fantasylab/sleeper",
+  "description": "Read-only access to the Sleeper fantasy football API: leagues, rosters, players, matchups, trending pickups, and lineup/start-sit/waiver analysis. No API key required (Sleeper's public API).",
+  "version": "1.1.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "sleeper-mcp",
+      "version": "1.1.1",
+      "transport": { "type": "stdio" }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+name: sleeper
+version: 1.1.1
+owner:
+  name: Fantasy Lab
+  namespace: dev.fantasylab
+  email: team@fantasylab.dev
+description: Sleeper fantasy football data provider (MCP). Read-only, no API key. Install alongside fantasy-manager to give the skills live data.
+license: MIT
+components:
+  - mcp: mcp/sleeper

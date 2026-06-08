@@ -1,0 +1,21 @@
+component: dev.fantasylab/fantasy-manager:trade-analyzer
+harnesses: [claude]
+cases:
+  - name: values-roster-fit-over-raw-value
+    prompt: "Evaluate this trade for me. Details are in trade.md."
+    setup: |
+      printf 'League: 12-team PPR\nI give: Jonathan Taylor (RB), my RB3\nI get: CeeDee Lamb (WR), would be my WR1\nMy roster: 4 startable RBs, only 1 startable WR\nStarting slots: 2 RB, 2 WR, 1 FLEX\n' > trade.md
+    cleanup: "rm -f trade.md"
+    assert:
+      - kind: trace
+        toolCalled: Read
+        minPassRate: 1.0
+      - kind: output
+        matches: "(?i)(accept|decline|counter)"
+      - kind: judge
+        rubric: "Did the assistant recognize that trading from RB surplus into a WR need is good roster fit, and lean toward accepting even if raw value is close?"
+  - name: gives-a-verdict
+    prompt: "Quick: I give Najee Harris, I get Mike Evans. 12-team PPR, I need WR help. Worth it?"
+    assert:
+      - kind: output
+        matches: "(?i)(accept|decline|counter)"

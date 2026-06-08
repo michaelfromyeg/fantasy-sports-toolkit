@@ -1,0 +1,19 @@
+# Loom build output (regenerate with `loom build`)
+out/
+
+# Loom install artifacts / per-machine harness state
+.claude/
+loom.lock
+**/loom.lock
+.loom/
+
+# Internal Loom maintainer notes (forwarded to the Loom devs; not part of this marketplace)
+LOOM-*.md
+
+# Dependencies
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+*.log
+*.swp

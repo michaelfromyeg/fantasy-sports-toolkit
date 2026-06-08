@@ -1,0 +1,16 @@
+component: dev.fantasylab/fantasy-manager:waiver-wire
+harnesses: [claude]
+cases:
+  - name: recommends-with-faab-bid
+    prompt: "Look at the free agents in fa.md and tell me who to claim and how much FAAB to bid."
+    setup: |
+      printf 'Budget remaining: $100 FAAB\nFree agents:\n- Jaylen Wright, RB (lead back this week after starter went on IR, 71%% snaps)\n- Random WR5 (4%% snaps, no targets)\nMy RBs: one healthy starter, one on bye next week\n' > fa.md
+    cleanup: "rm -f fa.md"
+    assert:
+      - kind: trace
+        toolCalled: Read
+        minPassRate: 1.0
+      - kind: output
+        matches: "(?i)(faab|%|wright)"
+      - kind: judge
+        rubric: "Did the assistant recommend the RB who just became a lead back over the buried WR5, and attach a FAAB bid?"
