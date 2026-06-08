@@ -1,14 +1,14 @@
-# Loom build output (regenerate with `loom build`)
+# Weft build output (regenerate with `weft build`)
 out/
 
-# Loom install artifacts / per-machine harness state
+# Weft install artifacts / per-machine harness state
 .claude/
-loom.lock
-**/loom.lock
-.loom/
+weft.lock
+**/weft.lock
+.weft/
 
-# Internal Loom maintainer notes (forwarded to the Loom devs; not part of this marketplace)
-LOOM-*.md
+# Internal Weft maintainer notes (forwarded to the Weft devs; not part of this marketplace)
+WEFT-*.md
 
 # Dependencies
 node_modules/

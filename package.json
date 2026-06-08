@@ -1,7 +1,7 @@
 {
   "name": "@michaelfromyeg/fantasy-sports-toolkit",
   "version": "0.1.1",
-  "description": "Sport-agnostic fantasy agent tooling for every coding-agent harness, authored as a Loom marketplace. Provider-agnostic skills (set-lineup, waiver-wire, trade-analyzer) for football/basketball/baseball/hockey, plus a Sleeper data-provider plugin. Consume with: loom install npm:@michaelfromyeg/fantasy-sports-toolkit",
+  "description": "Sport-agnostic fantasy agent tooling for every coding-agent harness, authored as a Weft marketplace. Provider-agnostic skills (set-lineup, waiver-wire, trade-analyzer) for football/basketball/baseball/hockey, plus a Sleeper data-provider plugin. Consume with: weft install npm:@michaelfromyeg/fantasy-sports-toolkit",
   "license": "MIT",
   "author": "michaelfromyeg",
   "homepage": "https://github.com/michaelfromyeg/fantasy-sports-toolkit#readme",
@@ -13,9 +13,9 @@
     "url": "https://github.com/michaelfromyeg/fantasy-sports-toolkit/issues"
   },
   "keywords": [
-    "loom",
-    "loom-marketplace",
-    "loom-plugin",
+    "weft",
+    "weft-marketplace",
+    "weft-plugin",
     "fantasy-sports",
     "fantasy-football",
     "fantasy-basketball",
