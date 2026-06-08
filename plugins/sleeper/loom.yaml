@@ -4,7 +4,7 @@ owner:
   name: Fantasy Lab
   namespace: dev.fantasylab
   email: team@fantasylab.dev
-description: Sleeper fantasy football data provider (MCP). Read-only, no API key. Install alongside fantasy-manager to give the skills live data.
+description: Sleeper fantasy data provider (MCP) -- covers Sleeper's supported sports (NFL and NBA). Read-only, no API key. Install alongside fantasy-manager to give the skills live data. A future espn/yahoo provider plugin would slot in the same way for other sports.
 license: MIT
 components:
   - mcp: mcp/sleeper

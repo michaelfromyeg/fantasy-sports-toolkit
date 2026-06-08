@@ -1,9 +1,9 @@
-# fantasy-football-toolkit
+# fantasy-sports-toolkit
 
-A fantasy-football toolkit you author **once** and compile to **every** coding agent.
+A fantasy-sports toolkit you author **once** and compile to **every** coding agent.
 
-`fantasy-football-toolkit` is a [Loom](https://github.com/michaelfromyeg/loom) marketplace
-(`fantasy-football-toolkit`, namespace `dev.fantasylab`). You write provider-agnostic skills,
+`fantasy-sports-toolkit` is a [Loom](https://github.com/michaelfromyeg/loom) marketplace
+(`fantasy-sports-toolkit`, namespace `dev.fantasylab`). You write provider-agnostic skills,
 commands, an agent, and MCP server definitions one time, and Loom compiles them
 into the native plugin/manifest format for five coding-agent harnesses:
 
@@ -14,8 +14,10 @@ into the native plugin/manifest format for five coding-agent harnesses:
 - OpenCode
 
 The core idea: the *judgment* (how to set a lineup, value a trade, or read the
-waiver wire) lives in portable skills, while the *data* comes from a swappable
-MCP "provider" plugin. Bring whichever fantasy platform you use; the skills stay
+waiver wire) lives in portable, **sport-agnostic** skills, while the *data* comes
+from a swappable MCP "provider" plugin. The same skills handle football,
+basketball, baseball, and hockey -- they read whatever roster slots and scoring
+your league uses. Bring whichever sport and platform you play; the logic stays
 the same.
 
 ## What's in here
@@ -34,20 +36,28 @@ are not committed -- run the CLI to regenerate them.
 
 ## The two plugins
 
-### `plugins/fantasy-manager` (skills, v0.2.0)
+### `plugins/fantasy-manager` (skills, v0.3.0)
 
 The provider-agnostic brains of the toolkit. It carries no roster data of its
 own -- it expects a data provider MCP (like `sleeper`) to be connected, and falls
-back to asking you to paste your roster if none is.
+back to asking you to paste your roster if none is. Every skill reads the league's
+own roster slots and scoring, so it works across sports:
+
+- **Football:** QB / RB / WR / TE / FLEX / K / DEF, weekly lineups, byes.
+- **Basketball:** PG / SG / SF / PF / C / G / F / UTIL, daily lineups, off-nights.
+- **Baseball:** C / 1B / 2B / 3B / SS / OF / UTIL / SP / RP, daily lineups.
+- **Hockey:** C / LW / RW / D / G, daily lineups, line/PP roles.
 
 **Skills** (auto-triggered by description, each with an eval suite):
 
-- `set-lineup` -- builds the optimal starting lineup for the week, respecting
-  roster slots, byes, and OUT designations; surfaces the close calls.
+- `set-lineup` -- builds the optimal starting lineup for the scoring period,
+  respecting the league's slots, schedule, and OUT/inactive designations;
+  surfaces the close calls.
 - `waiver-wire` -- ranks free agents by rest-of-season value *for your roster*
-  and assigns a FAAB bid and a drop candidate to each claim.
-- `trade-analyzer` -- scores a proposed trade on raw value and roster fit, then
-  gives an Accept / Decline / Counter verdict (and drafts the counter).
+  and assigns a FAAB bid (or waiver priority) and a drop candidate to each claim.
+- `trade-analyzer` -- scores a proposed trade on raw value and roster fit
+  (including category vs. points scoring), then gives an Accept / Decline /
+  Counter verdict (and drafts the counter).
 
 **Commands** (explicit, fast-path versions):
 
@@ -61,38 +71,41 @@ back to asking you to paste your roster if none is.
   recommends; it never submits claims.
 
 **Evals** (`evals/*.cases.yaml`): per-skill case suites with trace assertions
-(e.g. "the model called `Read`"), output regex matches, and LLM-judge rubrics.
-Run with `loom eval` against the Claude harness.
+(e.g. "the model called `Read`"), output regex matches, and LLM-judge rubrics,
+including both football and basketball lineup cases. Run with `loom eval` against
+the Claude harness.
 
 **Bundled "context" MCPs** -- provider-*independent* helpers that are useful no
-matter which fantasy platform you're on:
+matter which sport or platform you're on:
 
-- `sports-data` -- live NFL scores/schedules/standings (TheSportsDB via the
-  Pipeworx gateway). Remote HTTP (`streamable-http`), no install, no API key.
-- `reddit` -- search r/fantasyfootball and r/nfl for injury news and sentiment.
-  npm package, anonymous, no API key.
+- `sports-data` -- live scores/schedules/standings across sports (TheSportsDB via
+  the Pipeworx gateway). Remote HTTP (`streamable-http`), no install, no API key.
+- `reddit` -- search the sport's fantasy subreddits (r/fantasyfootball,
+  r/fantasybball, ...) for injury news and sentiment. npm package, anonymous, no
+  API key.
 - `web-fetch` -- fetch any page (injury reports, depth charts) as clean
   markdown. PyPI package, no API key.
 
-### `plugins/sleeper` (provider, v1.1.1)
+### `plugins/sleeper` (provider)
 
 A single MCP **data provider** plugin: read-only access to the Sleeper fantasy
-football API (leagues, rosters, players, matchups, trending pickups, plus
-lineup/start-sit/waiver analysis). No API key required (Sleeper's public API).
-Install it alongside `fantasy-manager` to give the skills live data.
+API for the sports Sleeper supports (NFL and NBA) -- leagues, rosters, players,
+matchups, trending pickups, plus lineup/start-sit/waiver analysis. No API key
+required (Sleeper's public API). Install it alongside `fantasy-manager` to give
+the skills live data.
 
 This is the swap point: a future `espn` or `yahoo` provider plugin could expose
-the same kind of roster/matchup data, and the `fantasy-manager` skills would
-work unchanged.
+the same kind of roster/matchup data for other sports, and the `fantasy-manager`
+skills would work unchanged.
 
 ## Design: agnostic skills + swappable provider
 
 Every skill, command, and the agent treats the connected fantasy MCP as a pure
 data source -- "Sleeper, ESPN, Yahoo, etc." -- and keeps the ranking, valuation,
-and slotting logic provider-independent. The result:
+and slotting logic both sport- and provider-independent. The result:
 
 - **One source of truth for the logic.** Improve the trade-valuation rules once;
-  every harness and every provider benefits.
+  every harness, sport, and provider benefits.
 - **Drop-in providers.** Connect `sleeper` today; swap in another provider later
   without touching the skills.
 - **Graceful degradation.** With no provider connected, the skills ask you to
@@ -114,9 +127,9 @@ Install this marketplace straight from a remote ref (no clone needed):
 
 ```sh
 # from GitHub
-loom install github:michaelfromyeg/fantasy-football-toolkit
+loom install github:michaelfromyeg/fantasy-sports-toolkit
 # or from npm
-loom install npm:@michaelfromyeg/fantasy-football-toolkit
+loom install npm:@michaelfromyeg/fantasy-sports-toolkit
 ```
 
 Or work with a local clone (run from the repo root, where `marketplace.yaml` lives):
@@ -157,7 +170,7 @@ authors:
 - `mcp-server-fetch` (PyPI)
 - the Pipeworx sports gateway remote (`https://gateway.pipeworx.io/sports/mcp`)
 
-Review each package before installing. The Sleeper, Reddit, NFL, and other
+Review each package before installing. The Sleeper, Reddit, and league/team
 trademarks belong to their respective owners; this project is unaffiliated.
 
 ## License

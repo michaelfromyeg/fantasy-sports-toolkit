@@ -1,22 +1,26 @@
 {
-  "name": "@michaelfromyeg/fantasy-football-toolkit",
+  "name": "@michaelfromyeg/fantasy-sports-toolkit",
   "version": "0.1.0",
-  "description": "Fantasy football agent tooling for every coding-agent harness, authored as a Loom marketplace. Provider-agnostic skills (set-lineup, waiver-wire, trade-analyzer) plus a Sleeper data-provider plugin. Consume with: loom install npm:@michaelfromyeg/fantasy-football-toolkit",
+  "description": "Sport-agnostic fantasy agent tooling for every coding-agent harness, authored as a Loom marketplace. Provider-agnostic skills (set-lineup, waiver-wire, trade-analyzer) for football/basketball/baseball/hockey, plus a Sleeper data-provider plugin. Consume with: loom install npm:@michaelfromyeg/fantasy-sports-toolkit",
   "license": "MIT",
   "author": "michaelfromyeg",
-  "homepage": "https://github.com/michaelfromyeg/fantasy-football-toolkit#readme",
+  "homepage": "https://github.com/michaelfromyeg/fantasy-sports-toolkit#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michaelfromyeg/fantasy-football-toolkit.git"
+    "url": "git+https://github.com/michaelfromyeg/fantasy-sports-toolkit.git"
   },
   "bugs": {
-    "url": "https://github.com/michaelfromyeg/fantasy-football-toolkit/issues"
+    "url": "https://github.com/michaelfromyeg/fantasy-sports-toolkit/issues"
   },
   "keywords": [
     "loom",
     "loom-marketplace",
     "loom-plugin",
+    "fantasy-sports",
     "fantasy-football",
+    "fantasy-basketball",
+    "fantasy-baseball",
+    "fantasy-hockey",
     "claude-code",
     "codex",
     "cursor",

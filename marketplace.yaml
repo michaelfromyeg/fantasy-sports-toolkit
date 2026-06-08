@@ -1,13 +1,13 @@
-name: fantasy-football-toolkit
+name: fantasy-sports-toolkit
 owner:
   name: Fantasy Lab
   namespace: dev.fantasylab
   email: team@fantasylab.dev
-description: Fantasy football agent tooling for every harness. Install the provider-agnostic skills, then add the data provider you use.
+description: Sport-agnostic fantasy agent tooling for every harness -- lineups, waivers, and trades across football, basketball, baseball, hockey, and more. Install the provider-agnostic skills, then add the data provider you use.
 plugins:
   - plugin: ./plugins/fantasy-manager
     category: skills
-    tags: [lineup, waivers, trades, provider-agnostic]
+    tags: [lineup, waivers, trades, provider-agnostic, multi-sport]
   - plugin: ./plugins/sleeper
     category: provider
     tags: [sleeper, mcp, data]

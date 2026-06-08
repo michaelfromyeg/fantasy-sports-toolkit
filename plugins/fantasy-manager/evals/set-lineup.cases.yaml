@@ -1,7 +1,7 @@
 component: dev.fantasylab/fantasy-manager:set-lineup
 harnesses: [claude]
 cases:
-  - name: reads-roster-before-setting
+  - name: football-reads-roster-before-setting
     prompt: "Set my optimal lineup. My roster is in roster.md."
     setup: |
       printf 'QB: Josh Allen (proj 24.1)\nRB: Bijan Robinson (proj 18.7)\nRB: Saquon Barkley (proj 17.9)\nRB: Tony Pollard (proj 11.2)\nWR: CeeDee Lamb (proj 19.4)\nWR: Puka Nacua (proj 15.1, OUT)\nWR: DeVonta Smith (proj 13.6)\nTE: Trey McBride (proj 12.8)\nSlots: 1 QB, 2 RB, 2 WR, 1 TE, 1 FLEX\n' > roster.md
@@ -12,7 +12,7 @@ cases:
         minPassRate: 1.0
       - kind: output
         matches: "(?i)(flex|lineup|start)"
-  - name: benches-injured-player
+  - name: football-benches-injured-player
     prompt: "Set my optimal lineup from roster.md. Do not start anyone marked OUT."
     setup: |
       printf 'WR: Puka Nacua (proj 15.1, OUT)\nWR: DeVonta Smith (proj 13.6)\nWR: Jaylen Waddle (proj 12.9)\nSlots: 2 WR\n' > roster.md
@@ -22,3 +22,16 @@ cases:
         matches: "(?i)(waddle|smith)"
       - kind: judge
         rubric: "Did the assistant keep Puka Nacua (marked OUT) on the bench and start two healthy WRs?"
+  - name: basketball-respects-slots-and-out
+    prompt: "Set my optimal NBA lineup from roster.md. Don't start anyone ruled OUT."
+    setup: |
+      printf 'G: Tyrese Haliburton (proj 44.2)\nG: Anthony Edwards (proj 41.8, OUT)\nG: Cade Cunningham (proj 39.0)\nSlots: 2 G\n' > roster.md
+    cleanup: "rm -f roster.md"
+    assert:
+      - kind: trace
+        toolCalled: Read
+        minPassRate: 1.0
+      - kind: output
+        matches: "(?i)(haliburton|cunningham)"
+      - kind: judge
+        rubric: "Did the assistant bench Anthony Edwards (ruled OUT) and start the two healthy guards, respecting the NBA roster slots?"

@@ -1,10 +1,10 @@
 name: fantasy-manager
-version: 0.2.0
+version: 0.3.0
 owner:
   name: Fantasy Lab
   namespace: dev.fantasylab
   email: team@fantasylab.dev
-description: Provider-agnostic skills for running a fantasy football team -- lineups, waivers, and trades -- bundled with the context MCPs (live scores, Reddit news, web fetch) that help regardless of which fantasy platform you use. Add a data provider (e.g. the sleeper plugin) for your roster.
+description: Sport-agnostic skills for running a fantasy team -- lineups, waivers, and trades across football, basketball, baseball, hockey, and more -- bundled with the context MCPs (live scores, Reddit news, web fetch) that help regardless of which fantasy platform you use. Add a data provider (e.g. the sleeper plugin) for your roster.
 license: MIT
 components:
   - skill: skills/set-lineup
