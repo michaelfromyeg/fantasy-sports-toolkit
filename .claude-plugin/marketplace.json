@@ -1,0 +1,48 @@
+{
+  "name": "fantasy-sports-toolkit",
+  "owner": {
+    "name": "Fantasy Lab",
+    "email": "team@fantasylab.dev"
+  },
+  "plugins": [
+    {
+      "name": "fantasy-manager",
+      "source": "./plugins/fantasy-manager",
+      "description": "Sport-agnostic skills for running a fantasy team -- lineups, waivers, and trades across football, basketball, baseball, hockey, and more -- bundled with the context MCPs (live scores, Reddit news, web fetch) that help regardless of which fantasy platform you use. Add a data provider (e.g. the sleeper plugin) for your roster.",
+      "version": "0.3.0",
+      "category": "skills",
+      "tags": [
+        "lineup",
+        "waivers",
+        "trades",
+        "provider-agnostic",
+        "multi-sport"
+      ]
+    },
+    {
+      "name": "sleeper",
+      "source": "./plugins/sleeper",
+      "description": "Sleeper fantasy data provider (MCP) -- covers Sleeper's supported sports (NFL and NBA). Read-only, no API key. Install alongside fantasy-manager to give the skills live data. The yahoo provider slots in the same way for Yahoo leagues, and a future espn provider would too.",
+      "version": "1.1.1",
+      "category": "provider",
+      "tags": [
+        "sleeper",
+        "mcp",
+        "data"
+      ]
+    },
+    {
+      "name": "yahoo",
+      "source": "./plugins/yahoo",
+      "description": "Yahoo Fantasy data provider (MCP), covering Yahoo's fantasy sports (NFL, NHL, NBA, MLB) with read and write access (leagues, rosters, matchups, free agents, set-lineup, add/drop, trades). Needs a one-time Yahoo OAuth login. Install alongside fantasy-manager to give the skills live data, the same way the sleeper provider does.",
+      "version": "0.1.0",
+      "category": "provider",
+      "tags": [
+        "yahoo",
+        "mcp",
+        "data"
+      ]
+    }
+  ],
+  "description": "Sport-agnostic fantasy agent tooling for every harness -- lineups, waivers, and trades across football, basketball, baseball, hockey, and more. Install the provider-agnostic skills, then add the data provider you use."
+}

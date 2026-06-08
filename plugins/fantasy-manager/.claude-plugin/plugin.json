@@ -1,0 +1,28 @@
+{
+  "name": "fantasy-manager",
+  "version": "0.3.0",
+  "author": {
+    "name": "Fantasy Lab",
+    "email": "team@fantasylab.dev"
+  },
+  "description": "Sport-agnostic skills for running a fantasy team -- lineups, waivers, and trades across football, basketball, baseball, hockey, and more -- bundled with the context MCPs (live scores, Reddit news, web fetch) that help regardless of which fantasy platform you use. Add a data provider (e.g. the sleeper plugin) for your roster.",
+  "mcpServers": {
+    "sports-data": {
+      "type": "http",
+      "url": "https://gateway.pipeworx.io/sports/mcp"
+    },
+    "reddit": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "reddit-mcp-buddy@1.1.13"
+      ]
+    },
+    "web-fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch"
+      ]
+    }
+  }
+}

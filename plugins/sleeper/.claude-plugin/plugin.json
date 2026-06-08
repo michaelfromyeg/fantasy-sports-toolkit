@@ -1,0 +1,18 @@
+{
+  "name": "sleeper",
+  "version": "1.1.1",
+  "author": {
+    "name": "Fantasy Lab",
+    "email": "team@fantasylab.dev"
+  },
+  "description": "Sleeper fantasy data provider (MCP) -- covers Sleeper's supported sports (NFL and NBA). Read-only, no API key. Install alongside fantasy-manager to give the skills live data. The yahoo provider slots in the same way for Yahoo leagues, and a future espn provider would too.",
+  "mcpServers": {
+    "sleeper": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "sleeper-mcp@1.1.1"
+      ]
+    }
+  }
+}
