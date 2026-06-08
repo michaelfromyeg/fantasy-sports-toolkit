@@ -1,0 +1,10 @@
+title: fantasy-sports-toolkit
+description: Sport-agnostic fantasy agent tooling you author once and compile to every coding agent.
+theme: jekyll-theme-cayman
+exclude:
+  - plugins/
+  - package.json
+  - CLAUDE.md
+  - LICENSE
+  - marketplace.yaml
+  - .gitignore
