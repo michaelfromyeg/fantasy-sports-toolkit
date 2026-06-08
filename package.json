@@ -1,6 +1,6 @@
 {
   "name": "@michaelfromyeg/fantasy-sports-toolkit",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Sport-agnostic fantasy agent tooling for every coding-agent harness, authored as a Weft marketplace. Provider-agnostic skills (set-lineup, waiver-wire, trade-analyzer) for football/basketball/baseball/hockey, plus a Sleeper data-provider plugin. Consume with: weft install npm:@michaelfromyeg/fantasy-sports-toolkit",
   "license": "MIT",
   "author": "michaelfromyeg",
