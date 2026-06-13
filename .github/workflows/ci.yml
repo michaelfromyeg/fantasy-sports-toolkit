@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  marketplace-fresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Fail the build if the committed Claude marketplace (.claude-plugin/) has
+      # drifted from the plugin sources -- i.e. someone edited a weft.yaml/skill
+      # without re-running the bare build. Writes nothing; just verifies.
+      - name: Verify the committed Claude marketplace matches source
+        run: npx --yes '@michaelfromyeg/weft-cli@^1.2.0' build . --target claude --out . --bare --check
